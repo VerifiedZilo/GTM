@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEAKFRAME</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background: black;
+        }
+
+        /* BACKGROUND VIDEOS */
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            transition: opacity 1s ease;
+        }
+
+        /* CENTER CONTENT */
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: white;
+            text-shadow: 0 0 25px #ff3b3b;
+            letter-spacing: 3px;
+        }
+
+        p {
+            font-size: 20px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        /* BUTTON */
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: 2px solid white;
+            cursor: pointer;
+            background: transparent;
+            color: white;
+            border-radius: 8px;
+            transition: 0.25s ease;
+            letter-spacing: 2px;
+        }
+
+            button:hover {
+                transform: scale(1.1);
+                background: rgba(255, 59, 59, 0.2);
+                border-color: #ff3b3b;
+                box-shadow: 0 0 15px #ff3b3b;
+            }
+
+        /* CORNER MENU */
+        .corner {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 10;
+            display: none;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* ITEM */
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+            /* LOGOS */
+            .item img {
+                width: 95px;
+                height: 95px;
+            }
+
+        /* NAME */
+        .name {
+            font-size: 30px;
+            color: white;
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* VERIFIED BADGE */
+        .verified {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+        }
+
+        /* LINKS */
+        .item a {
+            font-size: 17px;
+            color: white;
+            text-decoration: none;
+        }
+
+            .item a:hover {
+                text-decoration: underline;
+            }
+
+        /* PAID TAG */
+        .paid {
+            font-size: 14px;
+            padding: 3px 8px;
+            border: 1px solid #ff3b3b;
+            color: #ff3b3b;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND VIDEOS -->
+    <video id="bg1" autoplay loop muted>
+        <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <video id="bg2" loop muted style="opacity:0;">
+        <source src="background2.mp4" type="video/mp4">
+    </video>
+
+    <!-- CORNER MENU -->
+    <div class="corner" id="corner">
+
+        <div class="item">
+            <img src="logos/hamburbur.png">
+            <div>
+                <div class="name">
+                    hamburbur™
+                    <img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
+                </div>
+                <a href="https://discord.gg/W7Jh6Vx5Z" target="_blank">discord invite</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="logos/Elixir.png">
+            <div>
+                <div class="name">
+                    Elixir
+                    <img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
+                </div>
+                <a href="https://example.com" target="_blank">link here</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="logos/Project Malachi.png">
+            <div>
+                <div class="name">
+                    Project Malachi
+                    <img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
+                </div>
+                <a href="https://discord.gg/KVJ5eUrMCE" target="_blank">discord invite</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="logos/Untitled.png">
+            <div>
+                <div class="name">
+                    Untitled Menu <span class="paid">(PAID)</span>
+                    <img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
+                </div>
+                <a href="https://discord.gg/qwx7m4h5rR" target="_blank">discord invite</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <img src="logos/Seralyth.png">
+            <div>
+                <div class="name">
+                    Seralyth
+                    <img class="verified" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg">
+                </div>
+                <a href="https://discord.gg/cmUdZKGnEB" target="_blank">discord invite</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MAIN UI -->
+    <div class="center" id="ui">
+        <h1>STEAKFRAME</h1>
+        <p>Welcome</p>
+
+        <button onclick="enterSite()">Enter</button>
+    </div>
+
+    <script>
+        const bg1 = document.getElementById("bg1");
+        const bg2 = document.getElementById("bg2");
+        const ui = document.getElementById("ui");
+        const corner = document.getElementById("corner");
+
+        function enterSite() {
+            bg1.style.opacity = "0";
+            bg2.style.opacity = "1";
+
+            ui.style.display = "none";
+            corner.style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
